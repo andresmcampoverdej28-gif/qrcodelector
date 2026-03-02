@@ -1,6 +1,7 @@
 // src/app/(checkout)/scanner.tsx
 
 import { CameraView } from 'expo-camera';
+import * as Haptics from 'expo-haptics';
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 
@@ -9,6 +10,7 @@ export default function QRScanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     Alert.alert(
       "Código Scaneado",
       `Tipo: ${type}\nContenido: ${data}`,
